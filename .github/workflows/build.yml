@@ -18,6 +18,11 @@ jobs:
         run: |
           apk update && apk add git rsync
 
+      - name: Configure Git Safe Directory
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git config --global --add safe.directory /__w/suplemental-ui/suplemental-ui/github-pages-deploy-action-temp-deployment-folder
+  
       - uses: actions/checkout@v2
 
       - name: Install dependencies
@@ -33,10 +38,6 @@ jobs:
         with:
           name: docs
           path: docs/
-
-      - name: Configure Git Safe Directory
-        run: |
-          git config --global --add safe.directory /__w/suplemental-ui/suplemental-ui/github-pages-deploy-action-temp-deployment-folder
 
       - name: Check Directory Ownership
         run: |
