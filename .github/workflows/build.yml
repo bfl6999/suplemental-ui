@@ -23,7 +23,8 @@ jobs:
           cp -R node_modules/@antora/lunr-extension/supplemental_ui/* supplemental-ui/
           npx antora local-antora-playbook.yml --fetch
       # Uploads the generated site
-      - uses: actions/upload-artifact@v3
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.3.3
         with:
           name: docs
           path: docs/
