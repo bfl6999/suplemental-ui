@@ -39,11 +39,6 @@ jobs:
           name: docs
           path: docs/
 
-      - name: Check Directory Ownership
-        run: |
-          ls -l /__w/suplemental-ui/suplemental-ui/
-          ls -l /__w/suplemental-ui/suplemental-ui/github-pages-deploy-action-temp-deployment-folder
-  
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.6.1
         if: contains(github.ref,'refs/heads/main') 
