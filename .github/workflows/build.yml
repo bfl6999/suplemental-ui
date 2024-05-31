@@ -18,7 +18,7 @@ jobs:
         run: |
           apk update && apk add git rsync
 
-      - name: Configure Git Safe Directory
+      - name: Configure git to trust the workspace despite the different owner
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           git config --global --add safe.directory /__w/suplemental-ui/suplemental-ui/github-pages-deploy-action-temp-deployment-folder
@@ -43,6 +43,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.6.1
         if: contains(github.ref,'refs/heads/main') 
         with:
+          token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
           branch: gh-pages 
           folder: docs 
           clean: true    
